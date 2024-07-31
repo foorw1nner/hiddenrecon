@@ -4,19 +4,19 @@
 
 Installation
 ```bash
-▶ git clone https://github.com/foorw1nner/gf-addparams.git
-▶ cd gf-addparams
-▶ chmod +x gf-addparams
+▶ git clone https://github.com/foorw1nner/hiddenrecon.git
+▶ cd hiddenrecon
+▶ chmod +x hiddenrecon.sh
 ```
 
 Usage
 ```bash
-./gf-addparams [flags] [wordlist] [json file name]
+[buffer] | ./hiddenrecon.sh [flags]
 ```
 
 Example
 ```bash
-./gf-addparams -iE parameters xss.json
+./hiddenrecon.sh -eih -eda
 ```
 
 

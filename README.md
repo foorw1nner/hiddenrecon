@@ -4,13 +4,13 @@ Are you tired of the same old parameter recognition? active crawling with katana
 
 Well then maybe this tool is for you.
 
-With the -eih option you can find hidden entries waiting for a value in a web application, formatting in its original url hiddenrecon increases your chance of success in a string reflection.
+With the -ihs option you can find hidden entries waiting for a value in a web application, formatting in its original url hiddenrecon increases your chance of success in a string reflection.
 
 Empty "data-" custom attributes, are most of the time expecting a value, it won't always come from the url but it's not bad to test xD... for that use -eda
 
 I created hiddenrecon based on the "Airi" tool from my personal friend @ferreiraklet, please take a look, it's an incredible tool! https://github.com/ferreiraklet/airi
 
-![image](https://github.com/user-attachments/assets/223b8362-198f-49bc-a3b4-a9d084baf41f)
+![image](https://github.com/user-attachments/assets/e8ead2c2-78eb-486f-8a36-dff0e05d71e8)
 
 Installation
 ```bash
@@ -26,7 +26,7 @@ Usage
 
 Example
 ```bash
-cat urls.txt | ./hiddenrecon.sh -eih -eda
+cat urls.txt | ./hiddenrecon.sh -ihs -eda
 ```
 
 

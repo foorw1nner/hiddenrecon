@@ -26,7 +26,7 @@ Usage
 
 Example
 ```bash
-cat crawler.txt | ./hiddenrecon.sh -eih -eda
+cat urls.txt | ./hiddenrecon.sh -eih -eda
 ```
 
 

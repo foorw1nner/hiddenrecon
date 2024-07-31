@@ -8,7 +8,7 @@ With the -eih option you can find hidden entries waiting for a value in a web ap
 
 Empty "data-" custom attributes, are most of the time expecting a value, it won't always come from the url but it's not bad to test xD... for that use -eda
 
-I created hiddenrecon based on the "Airi" tool from my personal friend @fklet, please take a look, it's an incredible tool! https://github.com/ferreiraklet/airi
+I created hiddenrecon based on the "Airi" tool from my personal friend @ferreiraklet, please take a look, it's an incredible tool! https://github.com/ferreiraklet/airi
 
 ![image](https://github.com/user-attachments/assets/223b8362-198f-49bc-a3b4-a9d084baf41f)
 

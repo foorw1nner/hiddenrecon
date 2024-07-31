@@ -11,7 +11,7 @@ Installation
 
 Usage
 ```bash
-[buffer] | ./hiddenrecon.sh [flags]
+[buffers] | ./hiddenrecon.sh [flags]
 ```
 
 Example

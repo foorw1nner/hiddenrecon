@@ -38,12 +38,12 @@ echo "[ by: foorw1nner | x.com/foorw1nner | hackerone.com/foorw1nner | github.co
 	echo "+================================================+"
 	echo
 	echo "-h	Show This Help Message                  "
-	echo "-eih	Empty Input Hidden (<input type=\"hidden\" name=\"exemple\" value=\"\">)"
+	echo "-ihs	Input Hidden Search (<input type=\"hidden\" name=\"exemple\" value=\"example\">)"
 	echo "-eda	Empty Data Attributes (<div id=\"user\" data-user-id=\"\" data-user-role=\"\">)"
 	echo
 	echo "+================================================+"
 
-elif echo "$1" | grep -Eiq "\-eih|\-eda" && echo "$2" | grep -Eiq "\-eih|\-eda"
+elif echo "$1" | grep -Eiq "\-ihs|\-eda" && echo "$2" | grep -Eiq "\-ihs|\-eda"
 then
 	while IFS= read -r line
 	do
@@ -52,14 +52,14 @@ then
 
 	for url in "${lista[@]}"
 	do
-		parameters=$(curl -Lsk "$url" | grep -Eo $'<input[^>]*type=\'hidden\'[^>]*value=\'\'[^>]*>|<input[^>]*type="hidden"[^>]*value=""[^>]*>|<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=\'\'[^>]*>|<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=""[^>]*>' | tr -s ' ' '\n' | grep -E $'^data\-[A-Za-z0-9_-]+=\'\'|^data\-[A-Za-z0-9_-]+=""|^name=' | sed -E s'/name=|data\-//' | tr -d $'\'"' | awk -F '=' '{print $1"=hiddenrecon"}' | sort -u | tr -s '\n' '&'  | sed s'/\&$//')	
+		parameters=$(curl -Lsk "$url" | grep -Eo $'<input[^>]*type=\'hidden\'[^>]*value=[^>]*>|<input[^>]*type="hidden"[^>]*value=[^>]*>|<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=\'\'[^>]*>|<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=""[^>]*>' | tr -s ' ' '\n' | grep -E $'^data\-[A-Za-z0-9_-]+=\'\'|^data\-[A-Za-z0-9_-]+=""|^name=' | sed -E s'/name=|data\-//' | tr -d $'\'"' | awk -F '=' '{print $1"=hiddenrecon"}' | sort -u | tr -s '\n' '&'  | sed s'/\&$//')	
 		
 		assembling_url
 	done
 
-elif echo "$1" | grep -Eiq "\-eih|\-eda" && echo "$2" | grep -Eviq "\-eih|\-eda"
+elif echo "$1" | grep -Eiq "\-ihs|\-eda" && echo "$2" | grep -Eviq "\-ihs|\-eda"
 then
-	if echo "$1" | grep -Eiq "\-eih"
+	if echo "$1" | grep -Eiq "\-ihs"
 	then
 		while IFS= read -r line
 		do
@@ -68,7 +68,7 @@ then
 
 		for url in "${lista[@]}"
 		do
-			parameters=$(curl -Lsk "$url" | grep -Eo $'<input[^>]*type=\'hidden\'[^>]*value=\'\'[^>]*>|<input[^>]*type="hidden"[^>]*value=""[^>]*>' | tr -s ' ' '\n' | grep '^name=' | cut -d '=' -f2 | tr -d $'\'"' | sort -u | sed s'/$/=hiddenrecon/' | tr -s '\n' '&' | sed s'/\&$//')
+			parameters=$(curl -Lsk "$url" | grep -Eo $'<input[^>]*type=\'hidden\'[^>]*value=[^>]*>|<input[^>]*type="hidden"[^>]*value=[^>]*>' | tr -s ' ' '\n' | grep '^name=' | cut -d '=' -f2 | tr -d $'\'"' | sort -u | sed s'/$/=hiddenrecon/' | tr -s '\n' '&' | sed s'/\&$//')
 		
 			assembling_url
 		done

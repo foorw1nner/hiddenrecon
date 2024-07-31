@@ -4,18 +4,18 @@ function assembling_url () {
 
 	if echo "$url" | grep -q '\?.*='
 	then
-		echo "$url&$parameters"
+		echo "$url&$parameters" | grep hiddenrecon
 	elif echo "$url" | grep -Eq '\?[A-Za-z0-9_-]+$'
 	then
-		echo "$url=hiddenrecon&$parameters"
+		echo "$url=hiddenrecon&$parameters" | grep hiddenrecon
 	elif echo "$url" | grep -q '\?$'
 	then
-		echo "$url$parameters"
+		echo "$url$parameters" | grep hiddenrecon
 	elif echo "$url" | grep -q "/$"
 	then
-		echo "$url?$parameters"
+		echo "$url?$parameters" | grep hiddenrecon
 	else
-		echo "$url/?$parameters"
+		echo "$url/?$parameters" | grep hiddenrecon
 	fi
 
 }

@@ -52,7 +52,7 @@ then
 
 	for url in "${lista[@]}"
 	do
-		parameters=$(curl -Lsk "$url" | grep -E $'<input[^>]*type=\'hidden\'[^>]*value=\'\'[^>]*>|<input[^>]*type="hidden"[^>]*value=""[^>]*>|<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=\'\'[^>]*>|<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=""[^>]*>' | tr -s ' ' '\n' | grep -E $'^data\-[A-Za-z0-9_-]+=\'\'|^data\-[A-Za-z0-9_-]+=""|^name=' | sed -E s'/name=|data\-//' | tr -d $'\'"' | awk -F '=' '{print $1"=hiddenrecon"}' | sort -u | tr -s '\n' '&'  | sed s'/\&$//')	
+		parameters=$(curl -Lsk "$url" | grep -Eo $'<input[^>]*type=\'hidden\'[^>]*value=\'\'[^>]*>|<input[^>]*type="hidden"[^>]*value=""[^>]*>|<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=\'\'[^>]*>|<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=""[^>]*>' | tr -s ' ' '\n' | grep -E $'^data\-[A-Za-z0-9_-]+=\'\'|^data\-[A-Za-z0-9_-]+=""|^name=' | sed -E s'/name=|data\-//' | tr -d $'\'"' | awk -F '=' '{print $1"=hiddenrecon"}' | sort -u | tr -s '\n' '&'  | sed s'/\&$//')	
 		
 		assembling_url
 	done
@@ -68,7 +68,7 @@ then
 
 		for url in "${lista[@]}"
 		do
-			parameters=$(curl -Lsk "$url" | grep -E $'<input[^>]*type=\'hidden\'[^>]*value=\'\'[^>]*>|<input[^>]*type="hidden"[^>]*value=""[^>]*>' | tr -s ' ' '\n' | grep 'name=' | cut -d '=' -f2 | tr -d $'\'"' | sort -u | sed s'/$/=hiddenrecon/' | tr -s '\n' '&' | sed s'/\&$//')
+			parameters=$(curl -Lsk "$url" | grep -Eo $'<input[^>]*type=\'hidden\'[^>]*value=\'\'[^>]*>|<input[^>]*type="hidden"[^>]*value=""[^>]*>' | tr -s ' ' '\n' | grep '^name=' | cut -d '=' -f2 | tr -d $'\'"' | sort -u | sed s'/$/=hiddenrecon/' | tr -s '\n' '&' | sed s'/\&$//')
 		
 			assembling_url
 		done
@@ -81,7 +81,7 @@ then
 
 		for url in "${lista[@]}"
 		do
-			parameters=$(curl -Lsk "$url" | grep -E $'<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=\'\'[^>]*>|<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=""[^>]*>' | tr -s ' ' '\n' | grep "^data\-" | grep -E $'data-[A-Za-z0-9_-]+=\'\'|data-[A-Za-z0-9_-]+=""' | sed s'/^data-//' | cut -d '=' -f1 | sort -u | sed s'/$/=hiddenrecon/' | tr -s '\n' '&' | sed s'/\&$//')
+			parameters=$(curl -Lsk "$url" | grep -Eo $'<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=\'\'[^>]*>|<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=""[^>]*>' | tr -s ' ' '\n' | grep "^data\-" | grep -E $'data-[A-Za-z0-9_-]+=\'\'|data-[A-Za-z0-9_-]+=""' | sed s'/^data-//' | cut -d '=' -f1 | sort -u | sed s'/$/=hiddenrecon/' | tr -s '\n' '&' | sed s'/\&$//')
 		
 			assembling_url	
 		done

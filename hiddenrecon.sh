@@ -84,7 +84,7 @@ then
 
 		for url in "${list[@]}"
 		do
-			parameters=$(curl -Lsk "$url" | grep -Eo $'<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=\'\'[^>]*>|<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=""[^>]*>' | tr -s ' ' '\n' | grep "^data\-" | grep -E $'data-[A-Za-z0-9_-]+=\'\'|data-[A-Za-z0-9_-]+=""' | sed s'/^data-//' | cut -d '=' -f1 | sort -u | sed s'/$/=hiddenrecon/' | tr -s '\n' '&' | sed s'/\&$//')
+			parameters=$(curl -Lsk "$url" | grep -Eo $'<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=\'\'[^>]*>|<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=""[^>]*>' | grep -Eo $'data-[A-Za-z0-9_-]+=\'\'|data-[A-Za-z0-9_-]+=""' | sed s'/^data-//' | cut -d '=' -f1 | sort -u | sed s'/$/=hiddenrecon/' | tr -s '\n' '&' | sed s'/\&$//')
 		
 			assembling_url	
 		done

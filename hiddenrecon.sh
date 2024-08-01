@@ -45,6 +45,7 @@ echo "[ by: foorw1nner | x.com/foorw1nner | hackerone.com/foorw1nner | github.co
 
 elif echo "$1" | grep -Eiq "\-ihs|\-eda" && echo "$2" | grep -Eiq "\-ihs|\-eda"
 then
+	lista=()	
 	while IFS= read -r line
 	do
 		lista+=("$line")
@@ -61,6 +62,7 @@ elif echo "$1" | grep -Eiq "\-ihs|\-eda" && echo "$2" | grep -Eviq "\-ihs|\-eda"
 then
 	if echo "$1" | grep -Eiq "\-ihs"
 	then
+ 		lista=()
 		while IFS= read -r line
 		do
 			lista+=("$line")
@@ -74,6 +76,7 @@ then
 		done
 
 	else
+ 		lista=()
 		while IFS= read -r line
 		do
 			lista+=("$line")

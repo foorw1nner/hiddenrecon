@@ -53,7 +53,7 @@ then
 
 	for url in "${list[@]}"
 	do
-		parameters=$(curl -Lsk "$url" | grep -Eo $'<input[^>]*type=\'hidden\'[^>]*value=[^>]*>|<input[^>]*type="hidden"[^>]*value=[^>]*>|<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=\'\'[^>]*>|<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=""[^>]*>' | grep -Eo $'data\-[A-Za-z0-9_-]+=\'\'|data\-[A-Za-z0-9_-]+=""|<input[^>]*type=\'hidden\'[^>]*value=[^>]*>|<input[^>]*type="hidden"[^>]*value=[^>]*>' | tr -s ' ' '\n' | grep -Eo $'^data\-[A-Za-z0-9_-]+=\'\'|^data\-[A-Za-z0-9_-]+=""|^name=\'[A-Za-z0-9_-]+\'|^name="[A-Za-z0-9_-]+"' | sed -E s'/name=|data\-//' | tr -d $'\'"' | awk -F '=' '{print $1"=hiddenrecon"}' | sort -u | tr -s '\n' '&'  | sed s'/\&$//')	
+		parameters=$(curl -Lsk "$url" | grep -Eo $'data\-[A-Za-z0-9_-]+=\'\'|data\-[A-Za-z0-9_-]+=""|<input[^>]*type=\'hidden\'[^>]*value=[^>]*>|<input[^>]*type="hidden"[^>]*value=[^>]*>' | tr -s ' ' '\n' | grep -Eo $'^data\-[A-Za-z0-9_-]+=\'\'|^data\-[A-Za-z0-9_-]+=""|^name=\'[A-Za-z0-9_-]+\'|^name="[A-Za-z0-9_-]+"' | sed -E s'/name=|data\-//' | tr -d $'\'"' | awk -F '=' '{print $1"=hiddenrecon"}' | sort -u | tr -s '\n' '&'  | sed s'/\&$//')	
 		
 		assembling_url
 	done

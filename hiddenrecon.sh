@@ -38,20 +38,20 @@ echo "[ by: foorw1nner | x.com/foorw1nner | hackerone.com/foorw1nner | github.co
 	echo "+================================================+"
 	echo
 	echo "-h	Show This Help Message                  "
-	echo "-ihs	Input Hidden Search (<input type=\"hidden\" name=\"exemple\" value=\"example\">)"
+	echo "-ihs	Input Hidden Search (<input type=\"hidden\" name=\"example\" value=\"example\">)"
 	echo "-eda	Empty Data Attributes (<div id=\"user\" data-user-id=\"\" data-user-role=\"\">)"
 	echo
 	echo "+================================================+"
 
 elif echo "$1" | grep -Eiq "\-ihs|\-eda" && echo "$2" | grep -Eiq "\-ihs|\-eda"
 then
-	lista=()	
+	list=()	
 	while IFS= read -r line
 	do
-		lista+=("$line")
+		list+=("$line")
 	done
 
-	for url in "${lista[@]}"
+	for url in "${list[@]}"
 	do
 		parameters=$(curl -Lsk "$url" | grep -Eo $'<input[^>]*type=\'hidden\'[^>]*value=[^>]*>|<input[^>]*type="hidden"[^>]*value=[^>]*>|<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=\'\'[^>]*>|<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=""[^>]*>' | tr -s ' ' '\n' | grep -Eo $'^data\-[A-Za-z0-9_-]+=\'\'|^data\-[A-Za-z0-9_-]+=""|^name=\'[A-Za-z0-9_-]+\'|^name="[A-Za-z0-9_-]+"' | sed -E s'/name=|data\-//' | tr -d $'\'"' | awk -F '=' '{print $1"=hiddenrecon"}' | sort -u | tr -s '\n' '&'  | sed s'/\&$//')	
 		
@@ -62,13 +62,13 @@ elif echo "$1" | grep -Eiq "\-ihs|\-eda" && echo "$2" | grep -Eviq "\-ihs|\-eda"
 then
 	if echo "$1" | grep -Eiq "\-ihs"
 	then
- 		lista=()
+ 		list=()
 		while IFS= read -r line
 		do
-			lista+=("$line")
+			list+=("$line")
 		done
 
-		for url in "${lista[@]}"
+		for url in "${list[@]}"
 		do
 			parameters=$(curl -Lsk "$url" | grep -Eo $'<input[^>]*type=\'hidden\'[^>]*value=[^>]*>|<input[^>]*type="hidden"[^>]*value=[^>]*>' | tr -s ' ' '\n' | grep -Eo $'^name=\'[A-Za-z0-9_-]+\'|^name=\"[A-Za-z0-9_-]+\"' | cut -d '=' -f2 | tr -d $'\'"' | sort -u | sed s'/$/=hiddenrecon/' | tr -s '\n' '&' | sed s'/\&$//')
 		
@@ -76,13 +76,13 @@ then
 		done
 
 	else
- 		lista=()
+ 		list=()
 		while IFS= read -r line
 		do
-			lista+=("$line")
+			list+=("$line")
 		done
 
-		for url in "${lista[@]}"
+		for url in "${list[@]}"
 		do
 			parameters=$(curl -Lsk "$url" | grep -Eo $'<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=\'\'[^>]*>|<[A-Za-z0-9_-]+\s[^>]*data-[A-Za-z0-9_-]+=""[^>]*>' | tr -s ' ' '\n' | grep "^data\-" | grep -E $'data-[A-Za-z0-9_-]+=\'\'|data-[A-Za-z0-9_-]+=""' | sed s'/^data-//' | cut -d '=' -f1 | sort -u | sed s'/$/=hiddenrecon/' | tr -s '\n' '&' | sed s'/\&$//')
 		

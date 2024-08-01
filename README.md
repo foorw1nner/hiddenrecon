@@ -12,8 +12,6 @@ I created hiddenrecon based on the "Airi" tool from my personal friend @ferreira
 
 ![image](https://github.com/user-attachments/assets/43171c11-1244-49e5-9736-950dc905bc0e)
 
-
-
 Installation
 ```bash
 ▶ git clone https://github.com/foorw1nner/hiddenrecon.git

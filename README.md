@@ -10,8 +10,7 @@ Empty "data-" custom attributes, are most of the time expecting a value, it won'
 
 I created hiddenrecon based on the "Airi" tool from my personal friend @ferreiraklet, please take a look, it's an incredible tool! https://github.com/ferreiraklet/airi
 
-![image](https://github.com/user-attachments/assets/01dd5f34-22f0-4c63-bae7-2e497e6da8b7)
-
+![image](https://github.com/user-attachments/assets/43171c11-1244-49e5-9736-950dc905bc0e)
 
 
 

@@ -12,6 +12,12 @@ I created hiddenrecon based on the "Airi" tool from my personal friend @ferreira
 
 ![image](https://github.com/user-attachments/assets/43171c11-1244-49e5-9736-950dc905bc0e)
 
+# What exactly does the tool do?
+```-ihs```
+
+![image](https://github.com/user-attachments/assets/0c9d30ab-15d7-448a-8ac9-835678e0fb8b)
+
+
 Installation
 ```bash
 ▶ git clone https://github.com/foorw1nner/hiddenrecon.git

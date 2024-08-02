@@ -22,8 +22,7 @@ I created hiddenrecon based on the "Airi" tool from my personal friend @ferreira
 
 ![image](https://github.com/user-attachments/assets/f0e4e412-c054-4aeb-a7ab-6bb08813ac81)
 
-
-
+Remembering that you can use -ihs and -eda together :) ! Thank you see you later!
 
 Installation
 ```bash

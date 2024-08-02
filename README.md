@@ -20,7 +20,8 @@ I created hiddenrecon based on the "Airi" tool from my personal friend @ferreira
 
 ```-eda```
 
-![image](https://github.com/user-attachments/assets/f0e4e412-c054-4aeb-a7ab-6bb08813ac81)
+![image](https://github.com/user-attachments/assets/0b983e29-3225-45af-989f-b97c7e7ddaa8)
+
 
 Remembering that you can use -ihs and -eda together :) ! Thank you see you later!
 

@@ -15,7 +15,8 @@ I created hiddenrecon based on the "Airi" tool from my personal friend @ferreira
 # What exactly does the tool do?
 ```-ihs```
 
-![image](https://github.com/user-attachments/assets/0c9d30ab-15d7-448a-8ac9-835678e0fb8b)
+![image](https://github.com/user-attachments/assets/b2fb4769-03e3-42b7-86b3-bd6c3435e2c8)
+
 
 
 Installation
